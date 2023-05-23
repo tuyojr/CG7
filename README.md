@@ -2,10 +2,10 @@
 
 ## Steps to Reproduce on A Linux O.S. with Docker Installed
 
-This was tested on an Ubuntu 20.04 instance on AWS. If you need steps it install docker on it, check [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04). Also, dont forget to allow port 8000 from everywhere in your security group's inbound rule. THIS IS JUST FOR TESTING.
+This was tested on an Ubuntu 20.04 instance on AWS. If you need steps to install docker on it, check [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04). Also, dont forget to allow port 8000 from everywhere in your security group's inbound rule. THIS IS JUST FOR TESTING.
 
-1. Build the application image using a python base image.
-2. Instal git and clone the [conduit project](https://github.com/danjac/realworld).
+1. Build the application image using a python base image (as in the Dockerfile).
+2. Instal git and clone the [conduit django fullstack project](https://github.com/danjac/realworld) in Dockerfile.
 3. Build the image using `docker build -t image_name .`
 4. Run the image inside a container and map it to the application port using `docker run -t -p 8000:8000 --name app -d image_name`
 5. Get the container ID using `docker ps` Run the application migrations using `docker exec -it container_ID ./manage.py migrate`
