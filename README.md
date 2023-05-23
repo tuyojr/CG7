@@ -6,9 +6,9 @@
 2. Instal git and clone the [conduit project](https://github.com/danjac/realworld).
 3. Build the image using `docker build -t image_name .`
 4. Run the image inside a container and map it to the application port using `docker run -t -p 8000:8000 --name app -d image_name`
-5. Run the application migrations using `docker exec -it container_ID ./manage.py migrate`
+5. Get the container ID using `docker ps` Run the application migrations using `docker exec -it container_ID ./manage.py migrate`
 6. Start the application server locally using `docker exec -it container_ID ./manage.py runserver`. 
-7. If you're running this on the cloud, the steps are a bit different
+7. If you're running this on the cloud, the steps are a bit different:
     - first, get into the container and edit the `ALLOWED HOSTS`. Use the command `docker exect -it container_ID sh`
     - while in the container, edit the `ALLOWED HOSTS` using `vi realworld/settings.py`, put the IP address of the server in quotes e.g. ['4.232.43.5'], save, quit, and exit the container.
     - next use `docker exec -it container_ID ./manage.py runserver 0.0.0.0:8080` to start the server
