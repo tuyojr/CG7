@@ -14,10 +14,19 @@ WORKDIR /realworld
 RUN python -m venv venv
 
 # activate the virtual environment
-RUN source venv/bin/activate
+RUN /bin/sh -c "source venv/bin/activate && pip install -r requirements.txt"
 
 # install the project dependencies
 RUN pip install -r requirements.txt
 
 # expose the port 8000
 EXPOSE 8000
+
+# Copy the entrypoint script
+COPY entrypoint.sh /realworld/entrypoint.sh
+
+# Give execute permissions to the entrypoint script
+RUN chmod +x /realworld/entrypoint.sh
+
+# Create entrypoint for the application
+ENTRYPOINT ["/realworld
