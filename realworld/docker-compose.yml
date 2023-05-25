@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
+    ports:
+      - "3305:3306"
+    volumes:
+      - ./.env:/etc/environment
+      - mysql-db:/var/lib/mysql
+    restart: unless-stopped
+
+  conduit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: conduit
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+
+volumes:
+    mysql-db:
+      driver: local
