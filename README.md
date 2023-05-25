@@ -9,8 +9,9 @@ This was tested on an Ubuntu 20.04 instance on AWS. If you need steps to install
 3. Build the image using `docker build -t image_name .`
 4. Run the image inside a container and map it to the application port using `docker run -t -p 8000:8000 --name app -d image_name`, the application should start automatically 
 5. If you're running this on the cloud, the steps are a bit different:
-    - first, get into the `settings.py` file and `ALLOWED HOSTS` using `vi settings.py`, put the IP address of the server in quotes e.g. ['4.232.43.5'], save, quit, and exit the editor.
-6. Test the provided link in your browser. It should look something like this `http://127.0.0.1:8000/`, for local testing. If you're using a cloud provider, replace the localhost IP with your server's IP.
+    - first, get into the `settings.py` file of the cloned repo and edit the `ALLOWED HOSTS` using `vi settings.py`, put the IP address of the server in quotes e.g. ['4.232.43.5'], save, quit, and exit the editor.
+    - secondly, build the image using `docker build -t image_name .` and then run it in a container using `docker run -t -p 8000:8000 --name app -d image_name`.
+6. To view the app locally, input the link https://localhost:8000/ in your browser. On the cloud just paste https://instance_public_IP:8000/ in your browser.
 
 > Dockerfile
 
