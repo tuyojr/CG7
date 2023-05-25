@@ -2,6 +2,9 @@
 FROM python:3.10-alpine
 LABEL maintainer="tuyojr olutuyod@gmail.com"
 
+# install system dependencies
+RUN apk add --no-cache mariadb-connector-c-dev musl-dev gcc python3-dev libffi-dev openssl-dev cmake
+
 # copy project files to the working directory
 COPY . /realworld
 
@@ -12,13 +15,8 @@ WORKDIR /realworld
 RUN python -m venv venv
 
 # activate the virtual environment
-RUN /bin/sh -c "source venv/bin/activate"
-
-# install libmysqlclient-dev
-RUN apk add --no-cache mariadb-connector-c-dev
-
-# upgrade pip
-RUN pip install --upgrade pip
+# RUN /bin/sh -c "source venv/bin/activate"
+RUN source venv/bin/activate
 
 # install the project dependencies
 RUN pip install -r requirements.txt
@@ -28,6 +26,8 @@ EXPOSE 8000
 
 # Give execute permissions to the entrypoint script
 RUN chmod +x /realworld/entrypoint.sh
+
+RUN pip freeze
 
 # Create entrypoint for the application
 ENTRYPOINT ["/realworld/entrypoint.sh"]

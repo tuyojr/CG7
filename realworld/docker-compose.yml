@@ -12,7 +12,7 @@ services:
       MYSQL_PORT: ${MYSQL_PORT}
       MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
     ports:
-      - "3305:3306"
+      - "3306:3306"
     volumes:
       - ./.env:/etc/environment
       - mysql-db:/var/lib/mysql
@@ -27,6 +27,8 @@ services:
       - "8001:8000"
     depends_on:
       - db
+    environment:
+      MYSQL_HOST: db
 
 volumes:
     mysql-db:
