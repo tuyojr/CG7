@@ -2,5 +2,5 @@ __pycache__
 venv
 *.pyc
 *.sqlite3
-realworls/secrets.py
+realworls/vars.py
 .env

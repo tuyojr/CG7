@@ -14,13 +14,6 @@ WORKDIR /realworld
 # create a virtual environment
 RUN python -m venv venv
 
-# activate the virtual environment
-# RUN /bin/sh -c "source venv/bin/activate"
-RUN source venv/bin/activate
-
-# install the project dependencies
-RUN pip install -r requirements.txt
-
 # expose the port 8000
 EXPOSE 8000
 
