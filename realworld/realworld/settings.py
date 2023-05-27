@@ -96,6 +96,7 @@ DATABASES = {
         'PASSWORD': vars.MYSQL_PASSWORD,
         'HOST': vars.MYSQL_HOST,
         'PORT': vars.MYSQL_PORT,
+        'ROOT_PASSWORD': vars.MYSQL_ROOT_PASSWORD,
     }
 }
 

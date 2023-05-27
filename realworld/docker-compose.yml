@@ -4,8 +4,7 @@ services:
     image: mysql:8.0
     container_name: mysql-db
     environment:
-      MYSQL_ROOT_PASSWORD: ''
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -15,7 +14,6 @@ services:
       - "3306:3306"
     volumes:
       - ./.env:/etc/environment
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - mysql-db:/var/lib/mysql
     restart: unless-stopped
 
@@ -30,7 +28,10 @@ services:
       - db
     volumes:
       - vars.py:/realworld/vars.py
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
     mysql-db:
+      driver: local
+    vars.py:
       driver: local

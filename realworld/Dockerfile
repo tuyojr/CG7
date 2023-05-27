@@ -20,7 +20,5 @@ EXPOSE 8000
 # Give execute permissions to the entrypoint script
 RUN chmod +x /realworld/entrypoint.sh
 
-RUN pip freeze
-
 # Create entrypoint for the application
 ENTRYPOINT ["/realworld/entrypoint.sh"]
