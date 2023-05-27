@@ -15,6 +15,7 @@ services:
     volumes:
       - ./.env:/etc/environment
       - mysql-db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
 
   conduit:
@@ -26,12 +27,7 @@ services:
       - "8001:8000"
     depends_on:
       - db
-    volumes:
-      - vars.py:/realworld/vars.py
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
     mysql-db:
-      driver: local
-    vars.py:
       driver: local
