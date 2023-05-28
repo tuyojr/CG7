@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-# import the variables from the vars.py file
-import var
+# import the variables from the vars.py file in the root directory
+import os
+
+from realworld.var import MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, MYSQL_PORT, MYSQL_HOST, MYSQL_ROOT_PASSWORD
 
 from pathlib import Path
 
@@ -23,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-f35(x7w#1hz7%oejc(t(x8ii7n^%n0pvzsp@x*qtfh8^$3^3j+"
-SECRET_KEY = var.SECRET_KEY
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -90,12 +92,12 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': var.MYSQL_DATABASE,
-        'USER': var.MYSQL_USER,
-        'PASSWORD': var.MYSQL_PASSWORD,
-        'HOST': var.MYSQL_HOST,
-        'PORT': var.MYSQL_PORT,
-        'ROOT_PASSWORD': var.MYSQL_ROOT_PASSWORD,
+        'NAME': MYSQL_DATABASE,
+        'USER': MYSQL_USER,
+        'PASSWORD': MYSQL_PASSWORD,
+        'HOST': MYSQL_HOST,
+        'PORT': MYSQL_PORT,
+        'ROOT_PASSWORD': MYSQL_ROOT_PASSWORD,
     }
 }
 

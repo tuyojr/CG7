@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  db:
+  mysql_db:
     image: mysql:8.0
     container_name: mysql-db
     environment:
@@ -14,8 +14,8 @@ services:
       - "3306:3306"
     volumes:
       - ./.env:/etc/environment
-      - mysql-db:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql-db:/var/lib/mysql
     restart: unless-stopped
 
   conduit:
