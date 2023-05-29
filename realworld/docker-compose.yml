@@ -2,7 +2,7 @@ version: '3.7'
 services:
   mysql_db:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: mysql_db
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -14,9 +14,11 @@ services:
       - "3306:3306"
     volumes:
       - ./.env:/etc/environment
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - mysql-db:/var/lib/mysql
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_db:/var/lib/mysql
     restart: unless-stopped
+    networks:
+      - conduit
 
   conduit:
     build:
@@ -27,7 +29,12 @@ services:
       - "8001:8000"
     depends_on:
       - db
+    networks:
+      - conduit
 
 volumes:
     mysql-db:
       driver: local
+networks:
+  conduit:
+    driver: bridge
