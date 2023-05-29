@@ -33,7 +33,7 @@ services:
       - conduit
 
 volumes:
-    mysql-db:
+    mysql_db:
       driver: local
 networks:
   conduit:
