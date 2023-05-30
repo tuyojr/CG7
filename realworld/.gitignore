@@ -2,5 +2,5 @@ __pycache__
 venv
 *.pyc
 *.sqlite3
-realworld/var.py
+realworld/realworld/var.py
 .env
