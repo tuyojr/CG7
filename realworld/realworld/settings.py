@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-f35(x7w#1hz7%oejc(t(x8ii7n^%n0pvzsp@x*qtfh8^$3^3j+"
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('secret_key')
 
 # # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -98,6 +98,9 @@ DATABASES = {
         'HOST': MYSQL_HOST,
         'PORT': MYSQL_PORT,
         'ROOT_PASSWORD': MYSQL_ROOT_PASSWORD,
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
