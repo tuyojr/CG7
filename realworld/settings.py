@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-# import the variables from the vars.py file in the root directory
+# import the variables from the var.py file in the root directory
 import os
 
 from realworld.var import MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, MYSQL_PORT, MYSQL_HOST, MYSQL_ROOT_PASSWORD
