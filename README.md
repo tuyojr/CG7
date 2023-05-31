@@ -1,5 +1,8 @@
+# Containerizing The Real-World Application
 
-Implementation of real-world application: https://github.com/gothinkster/realworld/ using Django and HTMX.
+## Implementation of real-world application using Django and HTMX
+
+>[Gothinkster Real-World Application](https://github.com/gothinkster/realworld/)
 
 An in-depth discussion of this implementation can be found [here](https://danjacob.net/posts/anatomyofdjangohtmxproject/).
 
@@ -22,6 +25,5 @@ pip install -r requirements.txt
 
 ./manage.py migrate && ./manage.py runserver
 ```
-
 
 **Note: this is just a reference implementation and is not intended for production use.**
