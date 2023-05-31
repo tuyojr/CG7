@@ -1,6 +1,6 @@
 # Containerizing The Real-World Application
 
-## Implementation of real-world application using Django and HTMX
+## Implementation of real-world application using Django and HTMX by Dan Jacob @danjac
 
 >[Gothinkster Real-World Application](https://github.com/gothinkster/realworld/)
 
