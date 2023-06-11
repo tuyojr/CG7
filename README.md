@@ -17,7 +17,7 @@ To build and run the application:
     - The [Dockerfile](Dockerfile) is configured to use python as a base image, install the required packages so that our django application can connect to the MySQL container and use it as a database.
     - The [Dockerfile](Dockerfile) also copies the project directory into the container and runs the django application. Exposes the application on port 8000,a nd also sets the entrypoint to run the application.
     - The [entrypoint.sh](entrypoint.sh) file is used to install the project requirements, generate a secret key, run the migrations and start the application.
-3. Before going ahead to build the django image and run it in a container, there's a need to edit the [settings.py](settings.py) file in the `/realworld` folder so that it can make use of the MySQL database running inside its container. The details for the MySQL database will be picked from a [var.py](var.py) file. The application also needs to get the secret key generated at entrypoint from the environment variable.
+3. Before going ahead to build the django image and run it in a container, there's a need to edit the [settings.py](settings.py) file in the `/realworld` folder so that it can make use of the MySQL database running inside its container. The details for the MySQL database will be picked from a [var.py](var.py) file. You can also make use of a `.env` file and pick the details for the MySQL from there using `os.environ.get('variable_name')`. The application also needs to get the secret key generated at entrypoint from the environment variable.
 
     `settings.py` snippets of places to edit:
 
