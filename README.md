@@ -54,7 +54,7 @@ To build and run the application:
     }
     ```
 
-4. Next, build the django image and running it in a container using `docker compose up -d`.
+4. Next, build the django image and run it in a container using `docker compose up -d`.
 
 5. The database is created alongside the django application. Next we may need to rerun certain commands to ensure our application runs smoothly.
     - log into the database container `docker exec container_name /bin/bash`. While in the container:
